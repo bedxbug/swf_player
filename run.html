@@ -1,0 +1,102 @@
+<!-- https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_fullscreen -->
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style type="text/css">
+    #firstBlock{
+      text-align: center;
+    }
+
+    #b1{
+      margin-bottom: 30px;
+      margin-right: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="firstBlock">
+    <h2>Welcome to Flash Game</h2>
+    
+    <button onclick="openFullscreen();" id="b1">
+        Open Video in Fullscreen Mode
+    </button> 
+
+    <select id="selectGame" name="">
+      <option value="up-the-wahzoo.swf">Up Wahzoo</option>
+      <option value="Tickle-The-Girl.swf">Tickle Girl</option>
+      <option value="crossing-cups-sweet-jenny.swf">Sweet Jenny</option>
+      <option value="dress-my-babe-5.swf">Dress Me 5</option>
+      <option value="sweet-ayumi.swf">Sweet Ayumi</option>
+    </select>
+
+    <button onclick="playFlash();" id="playB">
+        Play Game
+    </button> 
+
+    <br>
+
+<!--     <object width="70%" height="500px" id="mySwf">
+      <embed src="up-the-wahzoo.swf" id="childSwf"> </embed>
+    </object>
+    <object width="70%" height="500px" id="mySwf">
+       <param name="movie" value="up-the-wahzoo.swf" id="mySwfSrc">
+    </object> -->
+
+      <embed src="up-the-wahzoo.swf" width="70%" height="500px" id="mySwf"> </embed>
+  </div>
+
+
+  <p>
+    <strong>Tip:</strong> Press the "Esc" key to exit full screen. <br>
+    <strong>Note:</strong> Internet Explorer 10 and earlier does not support the msRequestFullscreen() method.
+  </p>
+</body>
+
+
+<script>
+
+  var hello = document.getElementById("firstBlock");
+  var playButton = document.getElementById("playB");
+  var selectG = document.getElementById("selectGame");
+  var filePath = hello.baseURI.replace("run.html","")+"swf/";
+
+  function openFullscreen() {
+
+    var elem = document.getElementById("mySwf");
+
+    if (elem.requestFullscreen) {
+      elem.requestFullscreen();
+    } else if (elem.mozRequestFullScreen) { /* Firefox */
+      elem.mozRequestFullScreen();
+    } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
+      elem.webkitRequestFullscreen();
+    } else if (elem.msRequestFullscreen) { /* IE/Edge */
+      elem.msRequestFullscreen();
+    }
+  }
+
+  function removeEmbedElement(idTag="childSwf"){
+    var temp = document.getElementById(idTag);
+    hello.removeChild(temp);
+  }
+
+  function createEmbedElement(srcPath, width="70%", height="500px"){
+    var temp = document.createElement("EMBED");
+    temp.id = "mySwf";
+    temp.src = srcPath;
+    temp.width = width; 
+    temp.height = height;
+    hello.append(temp);
+  }
+
+  function playFlash(){
+    removeEmbedElement("mySwf");
+    srcPath = filePath + selectG.value;
+    createEmbedElement(srcPath);
+  }
+
+</script>
+
+</html>
