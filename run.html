@@ -23,9 +23,14 @@
         Open Video in Fullscreen Mode
     </button> 
 
-    <select id="selectGame" name="">
+<!--     <select id="selectGame" name="">
       <option value="Cadillacs and Dinosaurs_September_7th_2011.swf">Cadillacs and Dinosaurs</option>
-    </select>
+      <option value="cellar-door.swf">cellar door</option>
+      <option value="Madness Deathwish_august_22nd_2008.swf">Madness Deathwish</option>
+      <option value="Primal War 18_september_25th_2008.swf">Primal War</option>
+    </select> -->
+
+    <select id="selectGame" name=""></select>
 
     <button onclick="playFlash();" id="playB">
         Play Game
@@ -39,8 +44,7 @@
     <object width="70%" height="500px" id="mySwf">
        <param name="movie" value="up-the-wahzoo.swf" id="mySwfSrc">
     </object> -->
-
-      <embed src="up-the-wahzoo.swf" width="70%" height="500px" id="mySwf"> </embed>
+    <embed src="" width="70%" height="500px" id="mySwf"> </embed>
   </div>
 
 
@@ -57,6 +61,40 @@
   var playButton = document.getElementById("playB");
   var selectG = document.getElementById("selectGame");
   var filePath = hello.baseURI.replace("run.html","")+"swf/";
+
+
+  // <option value=""></option>
+
+  addWholeGameList();
+
+  function addOneGame(tag){
+    var temp_gameAdd = document.createElement("option");
+    temp_gameAdd.appendChild( document.createTextNode(tag.replace(".swf","")));
+    temp_gameAdd.value = tag;
+    selectG.appendChild(temp_gameAdd);
+  }
+
+  function addWholeGameList(){
+    // var gameList = [
+    //   "Cadillacs and Dinosaurs_September_7th_2011.swf",
+    //   "Madness Deathwish_august_22nd_2008.swf",
+    //   "Primal War 18_september_25th_2008.swf",
+    //   "cellar-door.swf",
+    // ];
+    var gameList = [
+      "Cadillacs and Dinosaurs.swf",
+      "Madness Deathwish.swf",
+      "Primal War.swf",
+      "Cellar Door.swf",
+    ];
+
+    for (var i = 0; i < gameList.length; i++) {
+      addOneGame(gameList[i]);
+      // console.log(gameList[i]);
+    }
+  }
+  
+
 
   function openFullscreen() {
 
