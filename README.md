@@ -12,3 +12,6 @@
 // Cadillacs and Dinosaurs
 control 
 punch - j
+
+### Download Flash Player
+https://web.archive.org/web/20201122021535id_/https://fpdownload.macromedia.com/pub/flashplayer/updaters/32/flashplayer_32_sa.dmg
