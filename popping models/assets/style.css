@@ -1,0 +1,23 @@
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  /*background-color: #000;*/
+}
+
+#popping_container{
+  margin:auto;
+  width:100%;
+  height:100%;
+  overflow:visible;
+}
+
+#title{
+  text-align: center;
+}
+
+/*canvas{
+  width:700px !important;
+  height:600px !important;
+}*/
